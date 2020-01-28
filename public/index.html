@@ -1,0 +1,108 @@
+<!doctype html>
+<html>
+<head>
+    <title>IMAGEBOARD</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="/js/vue.js"></script>
+
+</head>
+<body>
+
+
+
+
+    <h1 class="text-center p-3 mb-2 bg-secondary text-white">IMAGEBOARD</h1>
+    <div id="main" class="p-3 mb-2 bg-success text-dark">
+        <!-- <h1 @click="changeGreeting">{{greeting}}</h1>
+        <my-component @goodbye="sayGoodbye"
+        v.bind:greeting="greeting" greetee="funky chicken"></my-component>
+        <my-component :greeting="greeting" greetee="DANCING DUCK"></my-component>
+        <my-component :greeting="greeting" greetee="porky pig"></my-component> -->
+
+        <!-- TO CLOSE THE IMAGE WINDOW -->
+        <!-- v-if="currentImage" then show modal v-bind:id="currentImage" this id should be passed as a prop
+    v-on:close="unsetCurrentImage-->
+
+        <form class="" action="index.html" method="post">
+            <input v-model="title" type="text" name="title" placeholder="title">
+            <input v-model="description" type="text" name="description" placeholder="description">
+            <input v-model="username"type="text" name="username" placeholder="username">
+            <input @change="handleChange" type="file" name="file" accept="images/*">
+            <button @click.prevent.default="handleClick" class="btn btn-warning">Submit</button>
+        </form>
+
+
+
+        <br>
+<div class="container shadow rounded bg-warning text-dark text-center">
+
+<div v-if="images.length" v-for="image in images" href="'#'+ image.id" class="card border text-center p-3 mb-2 bg-secondary text-white" style="width: 18rem;">
+    <a :href="'#' + image.id" data-toggle="modal" data-target="modal">
+        <img :src="image.url" class="card-img-top border" @click="modal(image.id)" alt="">
+    </a>
+  <div class="card-body border">
+    <h5 class="card-title">{{image.title}}</h5>
+    <p class="card-text"><header><h4>@{{image.username}}</h4></header>{{image.description}}</p>
+  </div>
+  <br>
+</div>
+</div>
+<image-modal
+        v-if="chosenimage"
+        :chosenimage="chosenimage"
+        @close="closeModal"
+        >
+        <!-- @click="handleComments" -->
+</image-modal>
+
+</div>
+
+<!-- the first one is a variable, it should be something that describes the object,
+and the second one is the object's name -->
+<!-- <ul>
+    <li v-for="animal in animals" @click="myFunction(animal.name)">{{animal.name}}: {{animal.emoji}}</li>
+</ul> -->
+
+<script type="text/x-template" id="my-template">
+    <!-- it should be only one element, in this case, it is inside a div -->
+    <div class="text-white shadow rounded text-left" id="modal">
+        <div class="exbutton">
+        <button @click="closeModal">X</button>
+        </div>
+        <div class="gridmodal">
+            <div class="gridmodal1 card-img-top ">
+    <img :src="image.url" @click="modal(image.id)" id="modalimg" class="">
+            </div>
+            <div class="gridmodal2">
+    <h5 class="card-title">{{image.title}}</h5>
+    <p class="card-text">
+        <header><h4>@{{image.username}}</h4></header>
+        {{image.description}}</p>
+
+        <h5>Any comments?</h5>
+        <ul v-if="comments.length" v-for="comment in comments">
+            <li>{{comment.comment}} <h6>by @{{comment.username}}</h6></li>
+        </ul>
+        <form class="" action="index.html" method="post">
+            <input v-model="username" type="text" name="username" placeholder="username here"><br><br>
+            <input v-model="comment" type="text" name="comment" placeholder="comment here">
+            <br><br>
+            <button @click.prevent.default="handleComments" class="btn btn-warning">Add it!</button>
+        </form>
+</div>
+
+</div>
+    </div>
+</script>
+
+
+
+
+
+    <script src="/js/axios.min.js"></script>
+    <script src="/js/components.js"></script>
+    <script src="/js/script.js"></script>
+
+</body>
+</html>
